@@ -327,6 +327,4 @@ The environment is vulnerable to credential-based attacks and requires immediate
 
 This project was conducted in a controlled lab environment for educational purposes only.
 
-```
-
 
