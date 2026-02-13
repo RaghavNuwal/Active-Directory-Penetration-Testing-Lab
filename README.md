@@ -1,110 +1,163 @@
-# Active-Directory-Penetration-Testing-Lab
-📌 Project Overview
+# 🛡 Active Directory Penetration Testing Lab
 
-This project simulates a real-world enterprise Active Directory environment to demonstrate end-to-end penetration testing — from reconnaissance to full Domain Admin compromise.
+![Platform](https://img.shields.io/badge/Platform-Kali%20Linux-blue)
+![Target](https://img.shields.io/badge/Target-Windows%20Server%202019-red)
+![Environment](https://img.shields.io/badge/Environment-Active%20Directory-green)
+![Purpose](https://img.shields.io/badge/Purpose-Penetration%20Testing-orange)
 
-The objective was to start as an external attacker and escalate privileges within a corporate network.
+---
 
-🏗 Lab Architecture
+## 📌 Project Overview
 
-Attacker Machine:
+This project simulates a real-world enterprise Active Directory environment to demonstrate **end-to-end penetration testing**, from reconnaissance to full **Domain Admin compromise**.
 
-Kali Linux
+The objective was to begin as an external attacker and escalate privileges within a corporate network by identifying and exploiting Active Directory misconfigurations.
 
-Target Machines:
+---
 
-Windows Server 2019 (Domain Controller)
+## 🏗 Lab Architecture
 
-Windows 10 Client Machine
+### Attacker Machine
+- Kali Linux
 
-Domain Name:
+### Target Machines
+- Windows Server 2019 (Domain Controller)
+- Windows 10 Client Machine
 
-corp.local
+### Domain Information
 
+| Component | Value |
+|---------|--------|
+| Domain Name | corp.local |
+| Network Range | 192.168.10.0/24 |
+| Domain Controller | 192.168.10.10 |
+| Client Machine | 192.168.10.20 |
+| Attacker Machine | 192.168.10.30 |
 
-Network:
+---
 
-192.168.10.0/24
+## 🛠 Tools Used
 
-🛠 Tools Used
+| Tool | Purpose |
+|-----|---------|
+| Nmap | Network scanning and service detection |
+| Enum4Linux | SMB enumeration |
+| CrackMapExec | SMB and credential validation |
+| Responder | Credential harvesting |
+| BloodHound | Active Directory privilege analysis |
+| Neo4j | BloodHound database backend |
+| Impacket | Credential dumping and lateral movement |
+| Wireshark | Packet analysis |
 
-Nmap
+---
 
-Enum4Linux
+## 🔎 Attack Methodology
 
-CrackMapExec
+### Phase 1 – Reconnaissance
 
-Responder
+- Identified open ports and services using Nmap
+- Discovered critical services such as:
+  - SMB (445)
+  - LDAP (389)
+  - Kerberos (88)
 
-BloodHound
+---
 
-Neo4j
+### Phase 2 – Enumeration
 
-Impacket
+- Enumerated domain users via SMB
+- Identified shared resources and misconfigurations
+- Gathered domain information
 
-Wireshark
+---
 
-🔎 Attack Methodology
-Phase 1 – Reconnaissance
+### Phase 3 – Credential Harvesting
 
-Identified open ports and services using Nmap.
+- Captured NTLM hashes using Responder
+- Analyzed captured authentication attempts
+- Identified reusable credentials
 
-Discovered SMB, LDAP, Kerberos services.
+---
 
-Phase 2 – Enumeration
+### Phase 4 – Active Directory Enumeration
 
-Enumerated domain users via SMB.
+- Collected domain data using BloodHound
+- Mapped relationships between users, groups, and systems
+- Identified privilege escalation paths
 
-Identified accessible shares and misconfigurations.
+---
 
-Phase 3 – Credential Harvesting
+### Phase 5 – Exploitation
 
-Captured NTLM hashes using Responder.
+- Extracted credential hashes using Impacket
+- Performed Pass-the-Hash attacks
+- Authenticated to Domain Controller
 
-Performed offline password analysis.
+---
 
-Phase 4 – Active Directory Enumeration
+### Phase 6 – Privilege Escalation
 
-Collected AD data using BloodHound.
+- Escalated privileges to Domain Admin
+- Demonstrated full domain compromise
+- Verified administrative access
 
-Identified privilege escalation paths.
+---
 
-Phase 5 – Exploitation
+## 🎯 Final Outcome
 
-Extracted password hashes using Impacket.
+- Successfully escalated privileges to Domain Admin
+- Demonstrated lateral movement across systems
+- Compromised entire Active Directory domain
+- Documented vulnerabilities and remediation recommendations
 
-Conducted pass-the-hash attacks.
+---
 
-Phase 6 – Privilege Escalation
+## 🛡 Defensive Recommendations
 
-Achieved Domain Admin access.
+To mitigate such attacks, organizations should:
 
-Demonstrated full domain compromise.
+- Disable LLMNR and NBT-NS
+- Enforce SMB signing
+- Implement Least Privilege Principle
+- Monitor suspicious Windows Event IDs:
+  - 4624 – Logon events
+  - 4625 – Failed logon
+  - 4672 – Admin logon
+- Enable strong password policies
+- Deploy SIEM monitoring solutions
 
-🎯 Final Outcome
+---
 
-✔ Successfully escalated privileges to Domain Admin
-✔ Demonstrated lateral movement
-✔ Documented vulnerabilities and remediation steps
+## 📚 Key Learnings
 
-🛡 Defensive Recommendations
+- Understanding Active Directory attack methodology
+- Real-world credential harvesting techniques
+- Privilege escalation strategies in enterprise environments
+- Importance of secure Active Directory configuration
+- Detection and mitigation of credential-based attacks
 
-Disable LLMNR & NBT-NS
+---
 
-Enforce SMB signing
+## 📸 Screenshots
 
-Implement least privilege access
+Screenshots available in `/Screenshots` folder:
 
-Monitor suspicious Event IDs
+- Network scan results
+- Credential capture proof
+- BloodHound privilege graph
+- Domain Admin compromise proof
 
-Enable strong password policies
+---
 
-📚 Key Learnings
+## ⚠ Disclaimer
 
-Understanding of AD attack paths
+This project was conducted in a controlled lab environment for educational and ethical purposes only.
 
-Credential-based attacks in enterprise networks
+---
 
-Real-world red team simulation experience
+## 👤 Author
 
-Importance of proper AD hardening
+**Raghav Nuwal**  
+Cybersecurity Enthusiast | Risk Consultant | Penetration Testing Learner
+
+---
