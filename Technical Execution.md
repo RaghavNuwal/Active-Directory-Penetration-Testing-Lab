@@ -329,8 +329,4 @@ This project was conducted in a controlled lab environment for educational purpo
 
 ```
 
----
-
-If you want, I can also give you a **GitHub README with badges, diagrams, and visuals so it looks like a top cybersecurity portfolio project.**
-```
 
